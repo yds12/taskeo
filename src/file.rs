@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{Result, bail};
 use crate::task::Task;
 use crate::fs;
 
@@ -19,6 +19,20 @@ pub fn add_task(task: Task) -> Result<()> {
   tasks.push(task);
   let encoded_tasks = encode(&tasks)?;
   fs::save(encoded_tasks)
+}
+
+/// Deletes a task at index `number`. The index starts at 1.
+pub fn delete_task(number: u8) -> Result<()> {
+  if fs::file_exists() {
+    let contents = fs::load()?;
+    let mut tasks = decode(&contents[..])?;
+
+    tasks.remove((number - 1) as usize);
+    let encoded_tasks = encode(&tasks)?;
+    fs::save(encoded_tasks)
+  } else {
+    bail!("Task list is empty!");
+  }
 }
 
 fn encode(task: &Vec<Task>) -> Result<Vec<u8>> {

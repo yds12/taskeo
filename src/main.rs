@@ -16,8 +16,8 @@ fn list() {
   if let Ok(mut tasks) = tasks {
     tasks.sort();
 
-    for task in tasks {
-      println!("task: {}", task);
+    for (n, task) in tasks.iter().enumerate() {
+      println!("{}.\t{}", n + 1, task);
     }
   } else {
     println!("Error listing tasks.");
@@ -28,6 +28,9 @@ fn list() {
 /// might have a problem bigger than an integer overflow.
 fn delete(id: u8) {
   println!("Deleting task {}...", id);
+  if let Err(_) = file::delete_task(id) {
+    println!("Error deleting task.");
+  }
 }
 
 /// Add a new task with description `task` and a certain `priority` level.
