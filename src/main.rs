@@ -10,12 +10,17 @@ const DEFAULT_PRIO: u8 = 4;
 
 /// List all tasks
 fn list() {
-  println!("Listing tasks...");
   let tasks = file::get_tasks();
 
   if let Ok(mut tasks) = tasks {
+    if tasks.len() == 0 {
+      println!("Your TO-DO list is empty. Great!");
+      return;
+    }
+
     tasks.sort();
 
+    println!("Here is your TO-DO list:");
     for (n, task) in tasks.iter().enumerate() {
       println!("{}.\t{}", n + 1, task);
     }

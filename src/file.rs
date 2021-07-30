@@ -3,6 +3,10 @@ use crate::task::Task;
 use crate::fs;
 
 pub fn get_tasks() -> Result<Vec<Task>> {
+  if !fs::file_exists() {
+    return Ok(Vec::new());
+  }
+
   let contents = fs::load()?;
   let tasks = decode(&contents[..])?;
   Ok(tasks)
