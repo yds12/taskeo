@@ -14,16 +14,17 @@ fn list() {
 
   if let Ok(mut tasks) = tasks {
     if tasks.len() == 0 {
-      println!("Your TO-DO list is empty. Great!");
+      println!("Your TO-DO list is empty. Great!\n");
       return;
     }
 
     tasks.sort();
 
-    println!("Here is your TO-DO list:");
+    println!("Here is your TO-DO list:\n");
     for (n, task) in tasks.iter().enumerate() {
-      println!("{}.\t{}", n + 1, task);
+      println!("\t{}. {}", n + 1, task);
     }
+    println!("");
   } else {
     println!("Error listing tasks.");
   }
