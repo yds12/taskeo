@@ -1,6 +1,8 @@
 use std::env;
 use regex::Regex;
 
+mod task;
+
 /// List all tasks
 fn list() {
   println!("Listing tasks...");
