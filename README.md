@@ -12,9 +12,9 @@ your to-dos automatically when you open a new terminal.
 
 To add a task:
 
-    $ keo ** buy mangos
+    $ keo %% buy mangos
 
-Use 0 to 4 `*` to define the priority level of the task. This will be used by
+Use 0 to 4 `%` to define the priority level of the task. This will be used by
 `taskeo` to decide the order and color of the task in the list.
 
 Remove a task:
