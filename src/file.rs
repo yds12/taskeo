@@ -31,6 +31,10 @@ pub fn delete_task(number: u8) -> Result<()> {
     let contents = fs::load()?;
     let mut tasks = decode(&contents[..])?;
 
+    if (number - 1) as usize >= tasks.len() {
+      bail!("Task {} does not exist!", number);
+    }
+
     tasks.remove((number - 1) as usize);
     let encoded_tasks = encode(&tasks)?;
     fs::save(encoded_tasks)
