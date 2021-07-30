@@ -24,10 +24,6 @@ fn create_dir() -> Result<()> {
   Ok(())
 }
 
-pub fn file_path() -> String {
-  data_dir().join(FILENAME).to_path_buf().to_string_lossy().to_string()
-}
-
 pub fn file_exists() -> bool {
   data_dir().join(FILENAME).exists()
 }
