@@ -30,6 +30,7 @@ pub fn delete_task(number: u8) -> Result<()> {
   if fs::file_exists() {
     let contents = fs::load()?;
     let mut tasks = decode(&contents[..])?;
+    tasks.sort();
 
     if (number - 1) as usize >= tasks.len() {
       bail!("Task {} does not exist!", number);
