@@ -54,7 +54,7 @@ fn main() {
   match args.len() - 1 {
     0 => list(),
     1 if args[1].parse::<u8>().is_ok() => delete(args[1].parse::<u8>().unwrap()),
-    1 => add(&args[1][..], 0),
+    1 => add(&args[1][..], DEFAULT_PRIO),
     _ => {
       let r = Regex::new(r"(%)+").unwrap();
       if r.is_match(&args[1]) {
