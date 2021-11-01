@@ -22,7 +22,7 @@ fn list() {
 
     println!("Here is your TO-DO list:\n");
     for (n, task) in tasks.iter().enumerate() {
-      println!("\t{}. {}", n + 1, task);
+      println!(" {:>3}. {}", n + 1, task);
     }
     println!("");
   } else {
